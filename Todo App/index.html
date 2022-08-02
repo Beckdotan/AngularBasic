@@ -1,0 +1,37 @@
+<html ng-app="todoApp">
+    <head>
+        <title>To Do</title>
+        <script src="../angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+
+    <body>
+        <h1>To Do</h1>
+
+        <div ng-controller="TodoCtrl as ctrl">
+
+
+            <button ng-click="ctrl.triggerAddMode()" ng-hide="ctrl.addMode">Add</button>
+            <button ng-click="ctrl.triggerEditMode()" ng-hide="ctrl.addMode">{{ctrl.editButtonText}}</button>
+            <!-- adding new todo div -->
+            <div ng-show="ctrl.addMode">
+                <input style="text" ng-model="ctrl.newTodo"></input>
+                <p></p>
+                <button ng-click="ctrl.addTodo()">Save</button>
+                <button ng-click="ctrl.cancelTodo()">Cancel</button>
+            </div>
+            <!-- show to do list -->
+            <h3>Your ToDo's:</h3>
+            <ol>
+                <!-- the track by will allow duplicate strings-->
+                <li ng-repeat="todo in ctrl.todoList track by $index"> 
+                    <span ng-hide="ctrl.editMode">{{todo}}</span>
+                    <button ng-hide="ctrl.editMode" ng-click="ctrl.deleteTodo($index)"> Delete</button>
+                    <input ng-show="ctrl.editMode" ng-model="todo" type="text"></input>                    
+                </li>
+            </ol>
+        </div>
+    </body>
+
+</html>
+
