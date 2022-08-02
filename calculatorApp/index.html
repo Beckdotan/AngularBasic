@@ -1,0 +1,36 @@
+<html ng-app="calcApp">
+    <head>
+        <title>Calulator App</title>
+        <script src="../angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Calulator App</h1>
+
+        <div ng-controller="calc as ctrl">
+            <p>
+                <!-- using ng-change last result will be deleted in input change -->
+                <input type="text"  ng-change="ctrl.inputChange()" ng-model="ctrl.input1"  ></input>
+                <span> {{ctrl.selectedOp}} </span>
+                <input type="text"    ng-change="ctrl.inputChange()"   ng-model="ctrl.input2"  ></input>
+                <button ng-click="ctrl.calcRes()">=</button>
+                <span>{{ctrl.res}}</span>
+            </p>
+            <p style="color: red; font-size: smaller"> {{ctrl.inputError}} </p>
+            <p>
+                Choose Operator:
+                <button ng-click="ctrl.opButton('+')">+</button>
+                <button ng-click="ctrl.opButton('-')">-</button>
+                <button ng-click="ctrl.opButton('*')">*</button>
+                <button ng-click="ctrl.opButton('/')">/</button>
+                <p style="color: red; font-size: smaller"> {{ctrl.opError}} </p>
+            </p>
+        </div>
+       
+        
+  
+    </body>
+
+</html>
