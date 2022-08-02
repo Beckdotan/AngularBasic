@@ -1,0 +1,31 @@
+<html ng-app="moreDirectives">
+    <head>
+        <title>More Directives</title>
+        <script src="../angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+
+    <body >
+        <h1>More Directives</h1>
+        <div ng-controller="moreDricetiveCtrl as ctrl">
+            show lists <input type="checkbox" ng-model="ctrl.checked"></input>
+            <h4 ng-show="ctrl.checked">My List</h4>
+            <div ng-show="ctrl.checked" ng-repeat="i in ctrl.myList"> 
+                <p>
+                    {{i}}
+                </p>
+            </div>
+            <h4 ng-show="ctrl.checked">Obj List</h4>
+            <div ng-show="ctrl.checked" ng-repeat="obj in ctrl.objList"> 
+                <p>
+                    <!-- enter element properties -->
+                    {{$index}}) Name: {{obj.name}}, Age: {{obj.age}}
+                </p>
+                <!-- show line under every element -->
+                <hr/>
+            </div>
+        </div>
+    </body>
+
+</html>
+
